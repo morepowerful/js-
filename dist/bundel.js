@@ -251,12 +251,28 @@ exports.default = LinkedList;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-__webpack_require__(2);
-__webpack_require__(0);
-__webpack_require__(3);
-module.exports = __webpack_require__(4);
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_js_Stack__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_js_Stack___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__src_js_Stack__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_js_Queue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_js_Queue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__src_js_Queue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_js_LinkedList__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_js_LinkedList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__src_js_LinkedList__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_js_DoublyLinkedList__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_js_DoublyLinkedList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__src_js_DoublyLinkedList__);
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "Stack", function() { return __WEBPACK_IMPORTED_MODULE_0__src_js_Stack___default.a; });
+/* harmony reexport (binding) */ if(__webpack_require__.o(__WEBPACK_IMPORTED_MODULE_1__src_js_Queue__, "Queue")) __webpack_require__.d(__webpack_exports__, "Queue", function() { return __WEBPACK_IMPORTED_MODULE_1__src_js_Queue__["Queue"]; });
+/* harmony reexport (binding) */ if(__webpack_require__.o(__WEBPACK_IMPORTED_MODULE_1__src_js_Queue__, "PriorityQueue")) __webpack_require__.d(__webpack_exports__, "PriorityQueue", function() { return __WEBPACK_IMPORTED_MODULE_1__src_js_Queue__["PriorityQueue"]; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "LinkedList", function() { return __WEBPACK_IMPORTED_MODULE_2__src_js_LinkedList___default.a; });
+/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "DoublyLinkedList", function() { return __WEBPACK_IMPORTED_MODULE_3__src_js_DoublyLinkedList___default.a; });
+
+
+
+
+
 
 
 /***/ }),
@@ -272,130 +288,78 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _jsLinkedList = __webpack_require__(0);
-
-var _jsLinkedList2 = _interopRequireDefault(_jsLinkedList);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Node = function Node(element) {
-    _classCallCheck(this, Node);
+var Stack = function () {
+    function Stack() {
+        _classCallCheck(this, Stack);
 
-    this.element = element;
-    this.next = null;
-    this.prev = null;
-};
-
-var DoublyLinkedList = function (_LinkedList) {
-    _inherits(DoublyLinkedList, _LinkedList);
-
-    function DoublyLinkedList() {
-        _classCallCheck(this, DoublyLinkedList);
-
-        var _this = _possibleConstructorReturn(this, (DoublyLinkedList.__proto__ || Object.getPrototypeOf(DoublyLinkedList)).call(this));
-
-        _this.tail = null;
-        return _this;
+        this.items = [];
     }
 
-    _createClass(DoublyLinkedList, [{
-        key: 'append',
-        value: function append(element) {
-            var node = new Node(element);
-            var tailElement = this.tail;
-
-            if (this.length == 0) {
-                this.head = node;
-                this.tail = node;
-            } else {
-                tailElement.next = node;
-                this.tail = node;
-                this.tail.prev = tailElement;
-            }
-            this.length++;
+    _createClass(Stack, [{
+        key: 'push',
+        value: function push(item) {
+            //进栈
+            this.items.push(item);
         }
     }, {
-        key: 'insert',
-        value: function insert(element, position) {
-            var node = new Node(element);
-            var current = this.head;
-            var preElement = null;
-            var index = 0;
-
-            if (!(position >= 0 && position < this.length)) {
-                return false;
-            }
-
-            if (position == 0) {
-                node.next = current;
-                current.prev = node;
-                this.head = node;
-                this.length++;
-                return true;
-            }
-
-            while (index++ < position) {
-                preElement = current;
-                current = current.next;
-            }
-
-            this.length++;
-            current.prev = node;
-            preElement.next = node;
-            node.prev = preElement;
-            node.next = current;
-            return true;
+        key: 'pop',
+        value: function pop() {
+            //出栈
+            return this.items.pop();
         }
     }, {
-        key: 'removeAt',
-        value: function removeAt(position) {
-            var current = this.head;
-            var lastElement = this.tail;
-            var preElement = null;
-            var index = 0;
-
-            if (position == 0) {
-                this.head = current.next;
-                this.head.prev = null;
-            } else {
-                if (position == this.length - 1) {
-                    current = lastElement;
-                    this.tail = current.prev;
-                    this.tail.next = null;
-                } else {
-                    while (index++ < position) {
-                        preElement = current;
-                        current = current.next;
-                    }
-
-                    preElement.next = current.next;
-                    current.next.prev = preElement;
-                }
-            }
-
-            this.length--;
-            return current;
+        key: 'peek',
+        value: function peek() {
+            return this.items[this.items.length - 1];
+        }
+    }, {
+        key: 'isEmpty',
+        value: function isEmpty() {
+            return this.items.length === 0;
+        }
+    }, {
+        key: 'clear',
+        value: function clear() {
+            this.items = [];
+        }
+    }, {
+        key: 'size',
+        value: function size() {
+            return this.items.length;
+        }
+    }, {
+        key: 'print',
+        value: function print() {
+            console.log(this.items.toString());
         }
     }]);
 
-    return DoublyLinkedList;
-}(_jsLinkedList2.default);
+    return Stack;
+}();
 
-exports.default = DoublyLinkedList;
+//通过栈实现正整数转化为二进制
 
-// const linkedList = new DoublyLinkedList();
 
-// linkedList.append(1)
-// linkedList.append({age: 23})
-// linkedList.append({sex: '男'})
-// linkedList.insert(2,1)
-// console.log(linkedList.toString())
+function divideBy2(decNumber) {
+    var stack = new Stack();
+    var rem = void 0;
+    var decString = '';
+    while (decNumber > 0) {
+        rem = decNumber % 2;
+        stack.push(rem);
+        decNumber = Math.floor(decNumber / 2);
+    }
+
+    while (!stack.isEmpty()) {
+        decString += stack.pop().toString();
+    }
+    return decString;
+}
+console.log(divideBy2(10)); //1010
+
+exports.default = Stack;
 
 /***/ }),
 /* 3 */
@@ -532,78 +496,130 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _jsLinkedList = __webpack_require__(0);
+
+var _jsLinkedList2 = _interopRequireDefault(_jsLinkedList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Stack = function () {
-    function Stack() {
-        _classCallCheck(this, Stack);
+var Node = function Node(element) {
+    _classCallCheck(this, Node);
 
-        this.items = [];
+    this.element = element;
+    this.next = null;
+    this.prev = null;
+};
+
+var DoublyLinkedList = function (_LinkedList) {
+    _inherits(DoublyLinkedList, _LinkedList);
+
+    function DoublyLinkedList() {
+        _classCallCheck(this, DoublyLinkedList);
+
+        var _this = _possibleConstructorReturn(this, (DoublyLinkedList.__proto__ || Object.getPrototypeOf(DoublyLinkedList)).call(this));
+
+        _this.tail = null;
+        return _this;
     }
 
-    _createClass(Stack, [{
-        key: 'push',
-        value: function push(item) {
-            //进栈
-            this.items.push(item);
+    _createClass(DoublyLinkedList, [{
+        key: 'append',
+        value: function append(element) {
+            var node = new Node(element);
+            var tailElement = this.tail;
+
+            if (this.length == 0) {
+                this.head = node;
+                this.tail = node;
+            } else {
+                tailElement.next = node;
+                this.tail = node;
+                this.tail.prev = tailElement;
+            }
+            this.length++;
         }
     }, {
-        key: 'pop',
-        value: function pop() {
-            //出栈
-            return this.items.pop();
+        key: 'insert',
+        value: function insert(element, position) {
+            var node = new Node(element);
+            var current = this.head;
+            var preElement = null;
+            var index = 0;
+
+            if (!(position >= 0 && position < this.length)) {
+                return false;
+            }
+
+            if (position == 0) {
+                node.next = current;
+                current.prev = node;
+                this.head = node;
+                this.length++;
+                return true;
+            }
+
+            while (index++ < position) {
+                preElement = current;
+                current = current.next;
+            }
+
+            this.length++;
+            current.prev = node;
+            preElement.next = node;
+            node.prev = preElement;
+            node.next = current;
+            return true;
         }
     }, {
-        key: 'peek',
-        value: function peek() {
-            return this.items[this.items.length - 1];
-        }
-    }, {
-        key: 'isEmpty',
-        value: function isEmpty() {
-            return this.items.length === 0;
-        }
-    }, {
-        key: 'clear',
-        value: function clear() {
-            this.items = [];
-        }
-    }, {
-        key: 'size',
-        value: function size() {
-            return this.items.length;
-        }
-    }, {
-        key: 'print',
-        value: function print() {
-            console.log(this.items.toString());
+        key: 'removeAt',
+        value: function removeAt(position) {
+            var current = this.head;
+            var lastElement = this.tail;
+            var preElement = null;
+            var index = 0;
+
+            if (position == 0) {
+                this.head = current.next;
+                this.head.prev = null;
+            } else {
+                if (position == this.length - 1) {
+                    current = lastElement;
+                    this.tail = current.prev;
+                    this.tail.next = null;
+                } else {
+                    while (index++ < position) {
+                        preElement = current;
+                        current = current.next;
+                    }
+
+                    preElement.next = current.next;
+                    current.next.prev = preElement;
+                }
+            }
+
+            this.length--;
+            return current;
         }
     }]);
 
-    return Stack;
-}();
+    return DoublyLinkedList;
+}(_jsLinkedList2.default);
 
-//通过栈实现正整数转化为二进制
+exports.default = DoublyLinkedList;
 
+// const linkedList = new DoublyLinkedList();
 
-function divideBy2(decNumber) {
-    var stack = new Stack();
-    var rem = void 0;
-    var decString = '';
-    while (decNumber > 0) {
-        rem = decNumber % 2;
-        stack.push(rem);
-        decNumber = Math.floor(decNumber / 2);
-    }
-
-    while (!stack.isEmpty()) {
-        decString += stack.pop().toString();
-    }
-    return decString;
-}
-console.log(divideBy2(10)); //1010
-
-exports.default = Stack;
+// linkedList.append(1)
+// linkedList.append({age: 23})
+// linkedList.append({sex: '男'})
+// linkedList.insert(2,1)
+// console.log(linkedList.toString())
 
 /***/ })
 /******/ ]);

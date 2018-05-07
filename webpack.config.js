@@ -4,7 +4,7 @@ var resolve = require('path').resolve;
 var webpack = require('webpack');
 module.exports = {
     entry: {
-        bundel: ['./src/js-DoublyLinkedList.js','./src/js-LinkedList.js','./src/js-Queue.js','./src/js-Stack.js']
+        bundel: './index.js'
     },
     output: {
         filename: '[name].js',
