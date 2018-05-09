@@ -67,9 +67,9 @@ class PriorityQueue extends Queue {     //优先队列
 
 export { Queue, PriorityQueue }
 
-const priorityQueue = new PriorityQueue();
-priorityQueue.enqueue('liudong', 3)
-priorityQueue.enqueue('liudong1', 4)
-priorityQueue.enqueue('liudong2', 1)
-// priorityQueue.dequeue()
-priorityQueue.print();
+// const priorityQueue = new PriorityQueue();
+// priorityQueue.enqueue('liudong', 3)
+// priorityQueue.enqueue('liudong1', 4)
+// priorityQueue.enqueue('liudong2', 1)
+// // priorityQueue.dequeue()
+// priorityQueue.print();

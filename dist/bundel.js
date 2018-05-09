@@ -263,17 +263,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_js_LinkedList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__src_js_LinkedList__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_js_DoublyLinkedList__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_js_DoublyLinkedList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__src_js_DoublyLinkedList__);
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "Stack", function() { return __WEBPACK_IMPORTED_MODULE_0__src_js_Stack___default.a; });
-/* harmony reexport (binding) */ if(__webpack_require__.o(__WEBPACK_IMPORTED_MODULE_1__src_js_Queue__, "Queue")) __webpack_require__.d(__webpack_exports__, "Queue", function() { return __WEBPACK_IMPORTED_MODULE_1__src_js_Queue__["Queue"]; });
-/* harmony reexport (binding) */ if(__webpack_require__.o(__WEBPACK_IMPORTED_MODULE_1__src_js_Queue__, "PriorityQueue")) __webpack_require__.d(__webpack_exports__, "PriorityQueue", function() { return __WEBPACK_IMPORTED_MODULE_1__src_js_Queue__["PriorityQueue"]; });
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "LinkedList", function() { return __WEBPACK_IMPORTED_MODULE_2__src_js_LinkedList___default.a; });
-/* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "DoublyLinkedList", function() { return __WEBPACK_IMPORTED_MODULE_3__src_js_DoublyLinkedList___default.a; });
 
 
 
 
 
-
+/* harmony default export */ __webpack_exports__["default"] = ({ Stack: __WEBPACK_IMPORTED_MODULE_0__src_js_Stack___default.a, Queue: __WEBPACK_IMPORTED_MODULE_1__src_js_Queue__["Queue"], PriorityQueue: __WEBPACK_IMPORTED_MODULE_1__src_js_Queue__["PriorityQueue"], LinkedList: __WEBPACK_IMPORTED_MODULE_2__src_js_LinkedList___default.a, DoublyLinkedList: __WEBPACK_IMPORTED_MODULE_3__src_js_DoublyLinkedList___default.a });
 
 /***/ }),
 /* 2 */
@@ -357,7 +352,7 @@ function divideBy2(decNumber) {
     }
     return decString;
 }
-console.log(divideBy2(10)); //1010
+// console.log(divideBy2(10));//1010
 
 exports.default = Stack;
 
@@ -389,39 +384,39 @@ var Queue = function () {
     }
 
     _createClass(Queue, [{
-        key: 'enqueue',
+        key: "enqueue",
         value: function enqueue(item) {
             //入列
             this.items.push(item);
         }
     }, {
-        key: 'dequeue',
+        key: "dequeue",
         value: function dequeue() {
             //出列
             return this.items.shift();
         }
     }, {
-        key: 'front',
+        key: "front",
         value: function front() {
             return this.items[0];
         }
     }, {
-        key: 'isEmpty',
+        key: "isEmpty",
         value: function isEmpty() {
             return this.items.length === 0;
         }
     }, {
-        key: 'clear',
+        key: "clear",
         value: function clear() {
             this.items = [];
         }
     }, {
-        key: 'size',
+        key: "size",
         value: function size() {
             return this.items.length;
         }
     }, {
-        key: 'print',
+        key: "print",
         value: function print() {
             console.log(this.items.reverse().toString());
         }
@@ -441,7 +436,7 @@ var PriorityQueue = function (_Queue) {
     }
 
     _createClass(PriorityQueue, [{
-        key: 'enqueue',
+        key: "enqueue",
         value: function enqueue(item, priority) {
             var queueElement = { item: item, priority: priority };
             var _this = this;
@@ -463,7 +458,7 @@ var PriorityQueue = function (_Queue) {
             this.isEmpty() ? this.items.push(queueElement) : addPiorityQueue();
         }
     }, {
-        key: 'print',
+        key: "print",
         value: function print() {
             console.log(JSON.stringify(this.items.reverse()));
         }
@@ -475,13 +470,12 @@ var PriorityQueue = function (_Queue) {
 exports.Queue = Queue;
 exports.PriorityQueue = PriorityQueue;
 
-
-var priorityQueue = new PriorityQueue();
-priorityQueue.enqueue('liudong', 3);
-priorityQueue.enqueue('liudong1', 4);
-priorityQueue.enqueue('liudong2', 1);
-// priorityQueue.dequeue()
-priorityQueue.print();
+// const priorityQueue = new PriorityQueue();
+// priorityQueue.enqueue('liudong', 3)
+// priorityQueue.enqueue('liudong1', 4)
+// priorityQueue.enqueue('liudong2', 1)
+// // priorityQueue.dequeue()
+// priorityQueue.print();
 
 /***/ }),
 /* 4 */

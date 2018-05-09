@@ -49,6 +49,6 @@ function divideBy2(decNumber){
     }
     return decString;
 }
-console.log(divideBy2(10));//1010
+// console.log(divideBy2(10));//1010
 
 export default Stack;
